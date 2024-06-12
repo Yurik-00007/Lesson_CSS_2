@@ -2,37 +2,269 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <style>
+        /*1. Комбинаторы->Запятая*/
+        .block1,
+        .block2 {
+            color: black;
+            font-size: 100px;
+            border: 5px dashed black;
+            margin-bottom: 15px;
+        }
+
+        /*2. Комбинаторы->Пробел*/
+        div p {
+            color: blue; /* Синий текст */
+            font-weight: bold; /* Жирный текст */
+        }
+
+        /*3. Комбинаторы->Дочерние*/
+        .div__block1 > div {
+            color: white;
+            background-color: red;
+        }
+
+        /*4. Комбинаторы->Все соседние элементы*/
+        .div__block2 ~ span {
+            display: block;
+            background-color: greenyellow;
+        }
+
+        h2 ~ p {
+            color: red; /* Зеленый текст */
+            font-style: italic; /* Курсивный текст */
+        }
+
+        /*5. Комбинаторы->Следующий соседний элемент*/
+        .div__block3 + span {
+            display: block;
+            background-color: palevioletred;
+        }
+
+        h3 + p {
+            color: blueviolet; /* Зеленый текст */
+            font-style: italic; /* Курсивный текст */
+        }
+
+        /*Пример 1*/
+        .div__block01 ~ p > span > a[href^='https:'] {
+            color: #860000;
+            background-color: #8d8dde;
+        }
+
+        /*Пример 2*/
+        .div__block02 + div > span >input[type="text"] {
+            font-size: 36px;
+            color: #860000;
+            background-color: #8d8dde;
+        }
+    </style>
     <title>Title</title>
 
-    <!--3. Способ применить css-->
     <link rel="stylesheet" type="text/css" href="index.css">
 
-<!--1. Способ применить css-->
-<!--
-<style>
-    p{
-        color:green;
-    }
-</style>
--->
 
 </head>
+<!-----------------------------------------Селекторы------------------------------------------------->
+
+<!--Селектор по типу элемента-->
 <body>
 
-<!--<p>test</p>-->
-<!--2. Способ применить css inline стили-->
-<!--<p style="color:blue;">test</p>-->
+<!--Селектор по классу-->
+<div class="test1">test1</div>
+<!--Селектор по идентификатору-->
+<div id="test2">test2</div>
+<!--Селектор универсальный-->
+<div class="test3">
+    <span>test</span>
+    <span>test</span>
+    <span>
+        <div>
+            444444
+        </div>
+        <div>
+            55555
+        </div>
+        <div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci corporis dignissimos.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        </div>
+    </span>
+</div>
+<!--Селектор по атрибуту ->[атрибут="A"]: состоит из A-->
+<div>
+    <input type="text">
+    <input type="password">
+</div>
+<!--Селектор по атрибуту ->[атрибут$="A"]: оканчивается на A-->
+<div>
+    <input type="text">
+    <input type="password">
+    <img src="./4.png" alt="pic">
+</div>
+<!--Селектор по атрибуту ->[атрибут*="A"]: содержит A-->
+<div>
+    <img src="./ibm.svg" alt="pic">
+</div>
+<!--Селектор по атрибуту ->[атрибут^="A"]: начинается с A-->
+<div>
+    <div data-name="Apple">This is an Apple.</div>
+    <div data-name="Banana">This is a Banana.</div>
+    <div data-name="Avocado">This is an Avocado.</div>
+    <div data-name="Cherry">This is a Cherry.</div>
+</div>
+<!--Селектор по атрибуту ->[атрибут|="A"]: содержит A в слове с дефисом(-)-->
+<div>
+    <div data-category="A">This category is A.</div>
+    <div data-category="A-1">This category is A-1.</div>
+    <div data-category="B">This category is B.</div>
+    <div data-category="A-special">This category is A-special.</div>
+    <div data-category="AA">This category is AA.</div>
+    <div class="block-with-background">Lorem ipsum dolor sit amet.</div>
+</div>
+<!--Селектор по атрибуту ->[атрибут~="A"]: содержит A в слове с пробелом-->
+<div>
+    <div class="block background">Lorem ipsum dolor sit amet.</div>
+</div>
 
-<!--3. Способ применить css в отдельном файле(не забудь подключить через head->link)
-так было подключино потому что у нас всево один div в жизни такого не будет
-<link
-rel="stylesheet"->какой именно мы подключаем файл'таблица стилей'
- text="text/css"->какой именно контент находиться в файле
- href="index.css"->путь >
--->
+<!-----------------------------------------Комбинаторы------------------------------------------------->
+<!--1. Комбинаторы->Запятая-->
+<div>
+    <div class="block1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, sequi!</div>
+    <div class="block2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, sequi!</div>
+</div>
+<!--2. Комбинаторы->Пробел-->
 
-<div>test</div>
+<div>
+    <p>This is a paragraph inside a div.</p>
+    <p>Another paragraph inside the same div.</p>
+    <section>
+        <p>This paragraph is inside a section, which is inside the div.</p>
+    </section>
+</div>
+<!--3. Комбинаторы->Дочерние-->
+<div class="div__block1">
+    <div>1 ребенок</div>
+    <div>2 ребенок</div>
+    <header>
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing.
+        </div>
+    </header>
+</div>
+<!--4. Комбинаторы->Все соседние элементы-->
+<div class="div__block2">
+    <span>1</span>
+    <span>2</span>
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, vero!</div>
+    <span>3</span>
+</div>
+<span>4</span>
+<span>5</span>
+<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, vero!</div>
+<span>6</span>
 
+
+<div>
+    <h2>Heading 2</h2>
+    <p>This paragraph follows the h2.</p>
+    <span>Some other element.</span>
+    <p>This paragraph also follows the h2.</p>
+</div>
+<div>
+    <p>This paragraph does not follow an h2 in the same parent.</p>
+    <h2>Another Heading 2</h2>
+    <p>This paragraph follows the second h2.</p>
+</div>
+
+<!--5. Комбинаторы->Следующий соседний элемент-->
+<div class="div__block3">
+    <span>7</span>
+    <span>8</span>
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, vero!</div>
+    <span>9</span>
+</div>
+<span>10</span>
+<span>11</span>
+<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, vero!</div>
+<span>12</span>
+
+<div>
+    <h3>Heading 2</h3>
+    <p>This paragraph follows the h2.</p>
+    <span>Some other element.</span>
+    <p>This paragraph also follows the h2.</p>
+</div>
+<div>
+    <p>This paragraph does not follow an h2 in the same parent.</p>
+    <h3>Another Heading 2</h3>
+    <p>This paragraph follows the second h2.</p>
+    <span>This span will not be styled.</span>
+    <h3>Another Heading 2</h3>
+    <p>This paragraph follows the second h2.</p>
+    <span>This span will not be styled.</span>
+</div>
+
+<!--Пример 1-->
+<hr>
+<div>
+    <div class="div__block01">test</div>
+    <p>1</p>
+    <p>2</p>
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, vero!</div>
+    <p>
+        <span>
+            <a href="http://*">test</a>
+        </span>
+        <span>
+            <i>test</i>
+        </span>
+        <span>
+            <a href="https://*">test</a>
+        </span>
+    </p>
+</div>
+<!--Пример 2-->
+<div>
+    <div class="div__block02">test</div>
+    <div>
+        <span>
+            <input type="password"/>
+        </span>
+        <span>
+            <input type="text"/>
+        </span>
+        <span><span><span><input type="text"/></span></span></span>
+    </div>
+    <div>
+        <span>test</span>
+    </div>
+</div>
 <script src="index.js"></script>
 </body>
 </html>
+
+<!--
+Селекторы:
+    1. По типу элемента: input, span,div
+    2. По классу: .class__name
+    3. По идентификатору:#id_name
+    4. Универсальный:*
+    5. По атрибуту:
+        5.1. [атрибут="A"]: состоит из A
+        5.2. [атрибут$="A"]: оканчивается на A
+        5.3. [атрибут*="A"]: содержит A
+        5.4. [атрибут^="A"]: начинается с A
+        5.5. [атрибут|="A"]: содержит A в слове с дефисом(-)
+        5.6. [атрибут~="A"]: содержит A в слове с пробелом
+Комбинаторы:
+    1. Запятая: А, В
+    2. Пробел: А В
+    3. Дочерние: А > В
+    4. Все соседние элементы: А ~ В
+ CSS символ ~ используется как комбинатор соседних элементов общего родителя. Он позволяет выбирать элементы, которые
+ имеют общего родителя и находятся после указанного элемента, но не обязательно непосредственно после него.
+    5. Следующий соседний элемент: А + В
+В CSS символ + используется как комбинатор смежных соседей. Он позволяет выбирать элемент, который следует сразу за
+указанным элементом и находится на одном уровне в иерархии DOM (имеет общего родителя).
+-->

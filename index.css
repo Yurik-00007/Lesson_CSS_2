@@ -6,21 +6,79 @@
 СВОЙСТВО:ЗНАЧЕНИЕ;
 }
 */
-div{
-    color:orangered; /**/
-    background-color: pink;
+
+/*Селектор по типу элемента*/
+body{
+    font-size: 46px;
 }
 
+/*Селектор по классу*/
+.test1{
+    color:red;
+}
+/*Селектор по идентификатору*/
+#test2{
+    color:green;
+}
+/*Селектор универсальный*/
+.test3 *{
+    background-color: #ccc;
+}
 
+/*Селектор по атрибуту ->[атрибут="A"]: состоит из A*/
+input[type='text']{
+    background-color: greenyellow;
+}
+[type='password']{
+    background-color: hotpink;
+}
+/*Селектор по атрибуту ->[атрибут$="A"]: оканчивается на A*/
+/*
+div input[type$='xt']{
+    background-color: cornflowerblue;
+}
+[type$='word']{
+    background-color: darkorange;
+}
+*/
+img[src$='.png']{
+    border-radius: 10px;
+    border: 3px solid darkblue;
+}
 
-
-
-
-
-
-
-
-
+/*Селектор по атрибуту ->[атрибут*="A"]: содержит A*/
+img[src*='svg']{
+    padding: 5px;
+    background-color: greenyellow;
+}
+/*Селектор по атрибуту ->[атрибут^="A"]: начинается с A*/
+[data-name^="A"] {
+    background-color: yellow; /* Пример стиля: желтый фон */
+    color: red; /* Пример стиля: красный текст */
+    padding: 10px; /* Пример стиля: внутренний отступ */
+    border: 1px solid black; /* Пример стиля: черная рамка */
+}
+/*Селектор по атрибуту ->[атрибут|="A"]: содержит A в слове с дефисом(-)*/
+[data-category|="A"] {
+    background-color: lightblue; /* Пример стиля: светло-голубой фон */
+    color: darkblue; /* Пример стиля: тёмно-синий текст */
+    padding: 10px; /* Пример стиля: внутренний отступ */
+    border: 2px solid navy; /* Пример стиля: тёмно-синяя рамка */
+}
+div[class|='block-with']{
+    background-color: blueviolet;
+}div[class|='block']:hover{
+    background-color: transparent;
+    text-decoration: underline;
+}
+/*Селектор по атрибуту ->[атрибут~="A"]: содержит A в слове с пробелом*/
+div[class~='block']:hover{
+    color: darkblue;
+}
+div[class~='background']:hover{
+    text-decoration: underline;
+    background-color: deepskyblue;
+}
 
 
 
