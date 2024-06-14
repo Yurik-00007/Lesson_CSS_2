@@ -15,50 +15,50 @@
 
 
 </head>
-<!-----------------------------------------Псевдоклассы------------------------------------------------->
 
 <body>
-<div class="test1">
-    <button>test</button>
-</div>
-<hr>
-<div class="test2">
-    <button>test</button>
-    <button>test</button>
-    <button>test</button>
-    <button>test</button>
-    <button>test</button>
-    <button>test</button>
-    <button>test</button>
-    <button>test</button>
-    <button>test</button>
-    <button>test</button>
-</div>
-<hr>
-<form action="">
-    <div class="input_checkbox">
-        <input class="input" type="checkbox"/>
+<!-----------------------------------------position------------------------------------------------->
 
+<!--
+<div class="block_1">
+    1
+</div>
+<div class="block_2">
+    2
+</div>
+<div class="block_3">
+    3
+</div>
+-->
+
+<!----------------------------------------Пример------------------------------------------------------------>
+<div class="container">
+    <div class="block_1">
+        1
     </div>
-    <br>
-    <br>
-    <input type="text"/>
-    <input class="input" type="text" disabled/>
-    <br>
-    <br>
-    <input placeholder="Введите имя" type="text" class="input123"/>
-    <input class="input" type="text" required/>
-    <br>
-    <br>
-
-    <input class="input" type="password"/>
-    <button>test</button>
-</form>
-<hr>
-<!-----------------------------------------Псевдоэлементы------------------------------------------------->
-<div class="test-div">Lorem ipsum. Doloribus, quo!</div>
-<li>lorem</li>
-<div class="test-div1">lorem</div>
+    <div class="block_2">
+        2
+    </div>
+    <div class="block_3">
+        3
+    </div>
+</div>
+<div>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque deserunt, dicta eveniet quas rem veritatis voluptates!
+    Adipisci consequatur corporis, error excepturi illum in nesciunt numquam officiis quisquam reprehenderit sequi similique
+    tempore vel voluptates voluptatibus! Animi, asperiores delectus doloremque ea earum esse iusto necessitatibus, quam
+    quia quibusdam sunt velit voluptatibus? Consequatur deleniti in iure, laborum libero minus voluptate. Ab aliquam
+    aliquid commodi consequatur culpa cum cupiditate ducimus eius eveniet facilis hic laboriosam maxime natus non nulla
+    possimus, quae qui quibusdam rem repellat reprehenderit sed tempora ut vel vitae? Maiores qui saepe sapiente ullam!
+    Asperiores consequuntur cupiditate deleniti distinctio dolores ducimus ea, et incidunt magnam nisi sunt ullam. Alias
+    corporis excepturi exercitationem molestias nisi, quae reiciendis velit veniam voluptate voluptates. Amet dolores
+    ipsam maxime nam totam! Accusamus consequatur cupiditate exercitationem fuga fugit in laborum, magnam magni, maxime,
+    molestias neque nisi quis ratione reprehenderit saepe! Adipisci, consectetur dolor facilis minus omnis porro qui
+    repellendus sapiente sit tempore, veniam vitae. Consequatur, cumque cupiditate dignissimos in itaque nihil sed!
+    Beatae consectetur eaque fugiat laborum sed tempore voluptate voluptatibus. Aperiam, consequuntur cum error in
+    inventore odit quia sed voluptatem! Cumque eligendi id libero neque, nobis nulla officiis perferendis quo recusandae?
+    Autem cumque nulla placeat quaerat similique!
+</div>
 
 <script src="index.js"></script>
 </body>
@@ -66,32 +66,19 @@
 
 
 <!-- Ссылки: -->
-<!-- https://developer.mozilla.org/ru/docs/Web/CSS/Pseudo-classes -->
-<!-- https://developer.mozilla.org/ru/docs/Web/CSS/Pseudo-elements -->
+<!-- https://developer.mozilla.org/ru/docs/Web/CSS/position -->
+<!-- sticky - https://medium.com/web-standards/sticky-bc7ff7088693 -->
 
 <!--
-Псевдокласс в CSS — это ключевое слово, добавленное к селектору, которое определяет его особое состояние.
-	Псевдоклассы:
-		1. :active-> Когда пользователь нажимает на элемент.
-		2. :hover-> Когда указатель мыши находится над элементом.
-		3. :focus->При навигации с помощью клавиатуры или клике на элемент.
-		4. :first-child-> Этот псевдокласс применяется к первому дочернему элементу родителя.
-		5. :last-child->Этот псевдокласс применяется к последнему дочернему элементу родителя
-		6. :nth-child(n/odd/even)->Этот псевдокласс применяется к элементам на основе их позиции в группе братских элементов.
-		7. :nth-of-type(n)->Этот псевдокласс работает аналогично :nth-child, но учитывает только элементы определенного типа.
-		7. :required->то есть обязательные для заполнения,
-		    :checked->Этот псевдокласс применяется к элементам типа чекбоксов или радиокнопок, которые выбраны (отмечены),
-		    :disabled-> Этот псевдокласс применяется к элементам, которые отключены (неактивны).
-		8. :not()->Этот псевдокласс выбирает элементы, которые не соответствуют указанному селектору.
-
-Псевдоэлемент в CSS — это ключевое слово, добавляемое к селектору, которое позволяет стилизовать определённую часть
-выбранного элемента. Псевдоэлементобязательно должен содержать content: '' и display: inline-block;
-
-	Псевдоэлементы:
-		1. ::before
-		Псевдоэлемент before вставляет текст перед элементом. Используется только совместно со свойством content,
-		которое задает текст, который следует вставить. И display: inline-block; который говорит что объект должен иметь
-		область видимости
-		2. ::after
-		3. ::placeholder
+	position: static/relative/absolute/fixed;
+	top, left, right, bottom
+	В CSS свойства position и top, left, right, bottom используются для управления расположением элементов на веб-странице.
+	1. position: static - значение по умолчанию. Элементы с position: static расположены в нормальном потоке документа.
+	Свойства top, left, right, bottom для них не применяются.
+	2. position: relative - элемент с position: relative располагается относительно своего обычного положения. Свойства
+	top, left, right, bottom смещают элемент относительно его нормального положения.
+	3. position: absolute - элемент с position: absolute позиционируется относительно ближайшего предка с position: relative,
+	position: absolute или position: fixed. Если такого предка нет, то относительно начального контекста (обычно это <html>).
+	4. position: fixed - элемент с position: fixed позиционируется относительно окна браузера и остается на месте даже
+	при прокрутке страницы.
 -->
