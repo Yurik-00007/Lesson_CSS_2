@@ -63,7 +63,59 @@
 		2. ::after
 		3. ::placeholder
 
+--------------------------------------------- Позиционирование(position) ---------------------------------------------
 
+	position: static/relative/absolute/fixed;
+	top, left, right, bottom
+	В CSS свойства position и top, left, right, bottom используются для управления расположением элементов на веб-странице.
+	1. position: static - значение по умолчанию. Элементы с position: static расположены в нормальном потоке документа.
+	Свойства top, left, right, bottom для них не применяются.
+	2. position: relative - элемент с position: relative располагается относительно своего обычного положения. Свойства
+	top, left, right, bottom смещают элемент относительно его нормального положения.
+	3. position: absolute - элемент с position: absolute позиционируется относительно ближайшего предка с position: relative,
+	position: absolute или position: fixed. Если такого предка нет, то относительно начального контекста (обычно это <html>).
+	4. position: fixed - элемент с position: fixed позиционируется относительно окна браузера и остается на месте даже
+	при прокрутке страницы.
+
+--------------------------------------------- background ---------------------------------------------
+
+    0.Запись в одну строку
+    background: #eee url('./cat.ico') no-repeat center center/contain;*!
+    #eee->Устанавливает цвет фона элемента
+    url('./cat.ico')->Устанавливает фоновое изображение, находящееся по указанному пути
+    no-repeat->Указывает, что фоновое изображение не должно повторяться.
+    center center->Центрирует фоновое изображение по горизонтали и вертикали внутри элемента.
+    contain->Масштабирует фоновое изображение так, чтобы оно полностью поместилось внутри элемента, сохраняя свои пропорции.
+
+	1.background
+	Универсальное свойство background позволяет установить одновременно несколько характеристик фона.
+
+	2.background-attachment: fixed, scroll
+	Свойство background-attachment устанавливает, будет ли прокручиваться фоновое изображение вместе с содержимым элемента.
+
+	3.background-image,
+	Устанавливает фоновое изображение для элемента.
+
+	4.background-origin: https://webref.ru/css/background-origin
+	Свойство background-origin определяет область позиционирования фонового рисунка.
+
+	5.background-repeat: repeat-x, repeat-y, no-repeat, space,
+	Определяет, как будет повторяться фоновое изображение.
+
+	6.background-size: cover, contain, %, px
+	Масштабирует фоновое изображение, согласно заданным размерам.
+	cover - масштабирует изображение с сохранением пропорций так, чтобы его ширина или высота равнялась ширине или высоте блока.
+	(будет растягивать картинку пока картинка не достигнет обе границы и будет сильно увеличивать изображение)
+	contain - масштабирует изображение с сохранением пропорций таким образом, чтобы картинка целиком поместилась внутрь
+	блока(будет растягивать картинку пока картинка не достигнет размера какой-то границы).
+
+	7.background-position: center center
+	Задаёт начальное положение фонового изображения. Порядок не имеет значения(сначало по x потом по y),
+	можно писать top,bottom, left, right, center
+
+	8.background:linear-gradient(to top, #fefcea, #f1da36)
+	Стилевая функция linear-gradient() добавляет линейный градиент к фону элемента. Она выступает значением свойства
+	background-image или background.
 */
 
 /*Селектор по типу элемента*/
@@ -71,118 +123,65 @@ body {
     font-size: 46px;
     margin: 0;
     height: 1500px;
+    font-size: 56px;
+    font-weight: bold;
+    color: green;
 }
 
-.container{
-width: 50%;
-    background-color: #999;
-}
 
-.block_1,
-.block_2,
-.block_3
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    height: 100px;
-    color: black;
-    font-size: 35px;
-}
 /*------------------------------------position: fixed top left------------------------------------*/
-/* Вырывает элемент из контекста он начинает как будто парит и будет находиться на том же месте даже при прокрутке.
-Другие блоки займут его место.*/
-/*
-.block_1{
-    background-color: #cc0000;
-    position: fixed;
-    top: 100px;
-    left: 100px;
-}
-.block_2{
-    background-color:greenyellow;
-    position: fixed;
-    top:200px;
-    bottom: 0;
-    right: 100px;
-}
-.block_3{
-    background-color: #f6f676;
-    position: fixed;
-    top:300px;
-    bottom: 0;
-    right: 200px;
-}
-*/
 
 /*
-.block_1{
-    background-color: #d05454;
-    position: fixed;
-    top: 300px;
+.test1{
+    height: 1000px;
+    !*background: #eee url('./cat.ico') no-repeat center center/contain;*!
+    #eee->Устанавливает цвет фона элемента
+    url('./cat.ico')->Устанавливает фоновое изображение, находящееся по указанному пути
+    no-repeat->Указывает, что фоновое изображение не должно повторяться.
+    center center->Центрирует фоновое изображение по горизонтали и вертикали внутри элемента.
+    contain->Масштабирует фоновое изображение так, чтобы оно полностью поместилось внутри элемента, сохраняя свои пропорции.
+    background: #eee;
+    !*background: url("./cat.ico");*!
+    background-image: url('./cat.ico');
+    background-repeat: repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
-.block_2{
-    background-color:greenyellow;
-}
-.block_3{
-    background-color: #f6f676;
+
+.test2{
+    margin-top: 50px;
+    height: 300px;
+    !*background: #eee;*!
+    !*background: url("./cat.ico");*!
+    background-image: url('./cat.ico');
+    background-repeat: space;
 }
 */
-/*------------------------------------position: absolute------------------------------------*/
-/* Вырывает элемент из контекста он начинает как будто парит и будет находиться на одном месте, но при прокрутке будет
-прокручен. Другие блоки займут его место.*/
-
+.test1 {
+    height: 500px;
+    /*
+    background: #eee;
+    background-image: url('./1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    */
+    background: #eee url('./1.jpg') no-repeat center center/cover;
+}
 /*
-.block_1{
-    background-color: #d05454;
-    position: absolute;
-    top: 300px;
-    left: 300px;
-}
-.block_2{
-    background-color:greenyellow;
-}
-.block_3{
-    background-color: #f6f676;
-}
+.test1 {
+    height: 500px;
+    background:linear-gradient(to top, #fefcea, #f1da36)}
 */
-
-/*------------------------------------position: relative------------------------------------*/
-/* Элемент будет находиться на относительно своего обычного положения, о его существование будут знать другие элементы.
- И у него все равно останется свойство top,left,bottom и right. Если применить ему свойства top,left,bottom и right
- элемент будет перемещен, но его место ни кто из других элементов не займет*/
-
 /*
-.block_1{
-    background-color: #d05454;
-    position: relative;
-    top: 300px;
-    left: 300px;
-}
-.block_2{
-    background-color:greenyellow;
-}
-.block_3{
-    background-color: #f6f676;
-}
+.test2 {
+    height: 500px;
+    background:linear-gradient(to left, red, blue)}
 */
-/*------------------------------------Пример------------------------------------*/
-
-.block_1{
-    background-color: #d05454;
-    position: relative;
-    right: 5px;
-    top: 20px;
-}
-.block_2{
-    background-color:greenyellow;
-}
-.block_3{
-    background-color: #f6f676;
-}
-
-
+.test2 {
+    height: 500px;
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);}
 
 
 
