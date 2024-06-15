@@ -168,116 +168,98 @@ body {
     margin: 0;
     height: 1500px;
     font-weight: bold;
-    color: green;
+    color: black;
 }
 
 
 /*------------------------------------Специфичность, переменные, !important------------------------------------*/
-div{
-    height: 60vh;
-}
-.test1{
-    background: pink;
-    color: red;
-}
-/*100*/
-#testLi{
-    color: #402162;
-}
-/*003*/
-ul>ol>li {
-    color: #ffd500;
-}
-/*002*/
-ul li{
-    color: green;
-}
-/*001*/
-li{
-    color: blue !important;
-}
-
-.test1{
-    /*локальные переменные*/
-    --main-color: #402162;
-    --second-color: #ffd500;
-
-    /*
-    background: var(--second-color);
-    color: var(--main-color);
-    */
-}
-
-.test1{
-    margin:30px;
-    background: var(--second-color);
-    color: var(--main-color);
-}
-
-.test2{
-    margin:30px;
-    /*не сработает так как переменные локальные*/
-    background: var(--second-color);
-    color: var(--main-color);
-}
-/*Глобальные переменные*/
-:root{
-    /*root равнозначен html*/
---fonts:Arial, Helvetica, sans-serif;
-    background: #c0bfbf;
-}
 
 .container{
-    --main-color: #000;
-    --second-color: red;
-    font-family: var(--fonts), serif;
-
-    background: greenyellow;
-
+    font-size: 72px;
+    width: 100%;
+    height: 500px;
+    background: tomato;
 }
-/*или так*/
+
+/*@media УСЛОВИЕ {
+    .container{
+        background: aq;
+    }
+}*/
+/*------------------------Тип носителя:  print-для печати-------------------------------------------*/
+
+/*Примени этот код при печати*/
+@media print {
+    .container{
+        font-size: 6px;
+        background: aqua;
+    }
+}
+/* от 0 до 900px примени этот код(max-width->до)*/
+/*------------------------Характеристики: width,height-------------------------------------------*/
 /*
-html{
-    --main-color: #402162;
-    --second-color: #ffd500;
-
-    background: #c0bfbf;
-
+@media (max-width: 900px) {
+    .container{
+        font-size: 6px;
+        background: aqua;
+    }
 }
 */
+/* от 900 примени этот код(min-width->от)*/
 /*
-Приоритет от наибольшего к наименьшему:
-a - число id
-b - число классов, атрибутов, псевдо-классов
-c - число псевдоэлементов, тегов
-
-:not - не участвует, но селектор внутри участвует
-*, комбинаторы - не участвуют
-
-чем длиннее тем больше приоритет :)
-
-*               a=0 b=0 c=0 -> специфичность = 000
-li              a=0 b=0 c=1 -> специфичность = 001
-ul li           a=0 b=0 c=2 -> специфичность = 002
-ul ol+li        a=0 b=0 c=3 -> специфичность = 003
-h1 + *[href="www."]  a=0 b=1 c=1 -> специфичность = 011
-ul ol li.red    a=0 b=1 c=3 -> специфичность = 013
-li.red.level    a=0 b=2 c=1 -> специфичность = 021
-#test           a=1 b=0 c=0 -> специфичность = 100
-#test:not(p)    a=1 b=0 c=1 -> специфичность = 101
-#test:not(p.test)    a=1 b=1 c=1 -> специфичность = 111
-
+@media (min-width: 900px) {
+    .container{
+        font-size: 6px;
+        background: aqua;
+    }
+}
 */
+/* от 0 до 600 примени этот код(max-height->до)*/
+/*@media (max-height: 600px) {
+    .container{
+        font-size: 6px;
+        background: aqua;
+    }
+}*/
+/*--------------------------Характеристики: aspect-ratio-соотношение сторон--------------------------*/
+/*@media (aspect-ratio: 4/3) {
+    .container{
+        font-size: 6px;
+        background: aqua;
+    }
+}*/
+/*--------------------------Характеристики: orientation(portrait-вертик., landscape-горизонт.)-ориентация--------------------------*/
 
+/*@media (orientation: portrait) {
+    .container{
+        font-size: 6px;
+        background: aqua;
+    }
+}*/
 
+/*--------------------------Логический оператор: и(and)--------------------------*/
+/* условие и с этим и с этим должно быть true */
+@media (min-width: 500px) and (max-width: 900px) {
+    .container{
+        font-size: 6px;
+        background: aqua;
+    }
+}
+/*--------------------------Логический оператор: или(,)--------------------------*/
+@media (min-width: 900px) , (aspect-ratio: 16/9) {
+    .container{
+        font-size: 6px;
+        background: aqua;
+    }
+}
 
-
-
-
-
-
-
-
+/*--------------------------Логический оператор: отрицание(not)--------------------------*/
+@media not screen {
+    .container{
+        font-size: 6px;
+        background: aqua;
+    }
+}
 
 
 
