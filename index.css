@@ -160,6 +160,35 @@ li.red.level    a=0 b=2 c=1 -> специфичность = 021
           СЕЛЕКТОР {
         СВОЙСТВО:var(--ИМЯ);
         }
+
+---------------------------------------- Адаптивная верстка viewport ----------------------------------------
+
+Чтобы строчка отображалась нормально на любых устройствах можно вставить такой костыль, который просто копируешь
+вставлять из проекта в проект
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+viewport
+	Логический оператор: and or(,) not
+	Тип носителя: all-для всех, screen-для различных мониторов, print-для печати, speech-для голосовых ассистентов
+	Характеристики: width, height, aspect-ratio-соотношение сторон, orientation(portrait-вертик., landscape-горизонт.)-ориентация
+
+	@media УСЛОВИЕ {
+    .container{
+        background: aqua;
+    }}
+
+	Пример:
+	или
+	@media print {
+    или
+	@media (max-width: 900px)
+	или
+	@media (aspect-ratio: 4/3)
+
+	{.container{
+        font-size: 6px;
+        background: aqua;}
+}
 */
 
 /*Селектор по типу элемента*/
