@@ -189,6 +189,102 @@ viewport
         font-size: 6px;
         background: aqua;}
 }
+
+/*------------------------------------transition------------------------------------*/
+
+/*В классе указывается transition а в псевдоклассе(:hover) или медиа-запросе укрываются свойства которые нужно изменить*/
+
+/*.container {
+    width: 500px;
+    height: 500px;
+    background: tomato;
+    transition: all 1s linear;
+    !*transition: font-size 1.5s linear .5s;*!
+}*/
+/*transition:  font-size           1.5s            linear           .5s;*/
+/*            свойства=all    длительность=0s   скорость=ease   анимации=0s*/
+/*              property          duration      timing-function      delay*/
+/*
+
+transition можно использовать с псевдоклассами и с медиа-запросами
+
+ Универсальное свойство, которое позволяет одновременно задать значения transition-property, transition-duration,
+ transition-timing-function и transition-delay.
+
+ Устанавливает эффект перехода между двумя состояниями элемента, они могут быть определены с помощью псевдокласса
+:hover или :active, а также динамически через JavaScript.
+
+1.Свойство transition-delay устанавливает время ожидания перед запуском эффекта перехода.
+
+2.Свойство transition-property устанавливает имя стилевого свойства, значение которого будет отслеживаться для
+создания эффекта перехода.
+
+3.Свойство transition-duration задаёт время в секундах или миллисекундах, сколько должна длиться анимация перехода
+до её завершения.
+
+4.Свойство transition-timing-function устанавливает, насколько быстро должно изменяться значение стилевого свойство
+для которого применяется эффект перехода.
+*/
+
+
+
+/*
+.container:hover {
+    background: green;
+    font-size: 26px;
+    color: white;
+}
+*/
+
+/*@media (max-width: 800px) {
+    .container {
+        background: yellow;
+    }
+}*/
+
+/*------------------------------------animation------------------------------------*/
+
+/*
+
+CSS-анимации позволяют анимировать переходы от одной конфигурации CSS стилей к другой.
+animation - универсальное свойство, которое задаёт сразу несколько параметров анимации.
+
+    animation-name: changeMargin; !*имя->может быть любое*!
+    animation-duration: 5s; !*длительность->может быть любая *!
+    animation-timing-function: ease; !*скорость-> ease | ease-in | ease-out | ease-in-out | linear*!
+    animation-delay: 1.5s; !*задержка->может быть любая *!
+    animation-fill-mode: forwards;
+    !*какие стили должны применяться к элементу, когда анимация закончиться->none | forwards | backwards | both*!
+    animation-iteration-count: infinite; !*кол-во повторений->может быть любое(infinite-бесконечность) *!
+    animation-direction: alternate; !*направление движения анимации->normal | alternate | reverse | alternate-reverse*!
+
+Короткая запись:
+    animation:5s ease 1.5s forwards infinite alternate changeMargin
+
+Порядок:
+ animation:1s ease .5s infinite alternate move
+
+animation: duration|timing-function|
+delay|iteration-count|
+direction|fill-mode|name
+
+Правило @keyframes устанавливает ключевые кадры при анимации элемента. Ключевой кадр это свойства элемента (прозрачность,
+цвет, положение и др.), которые должны применяться к элементу в заданный момент времени. Таким образом, анимация
+представляет собой плавный переход стилевых свойств от одного ключевого кадра к другому. Вычисление промежуточных
+значений между такими кадрами берёт на себя браузер.
+Анимация может использовать ключевые слова from и to, а так же проценты 0% 20% 50% 100%
+
+@keyframes move {
+    from{
+    margin-top:0;
+    }
+    to{
+        margin-left: 500px;
+    }
+}
+
+
+
 */
 
 /*Селектор по типу элемента*/
@@ -201,112 +297,207 @@ body {
 }
 
 
-/*------------------------------------Специфичность, переменные, !important------------------------------------*/
+/*------------------------------------transition------------------------------------*/
 
-.container{
-    font-size: 72px;
-    width: 100%;
+/*.container {
+    width: 500px;
     height: 500px;
     background: tomato;
-}
+    transition: all 1s linear;
+    !*transition: font-size 1.5s linear .5s;*!
+}*/
+    /*          свойства=all время=0s скорость=ease анимации=0s */
+    /*           property    */
+    /*
+    transition можно использовать с псевдоклассами и с медиа-запросами
+     Универсальное свойство, которое позволяет одновременно задать значения transition-property, transition-duration,
+     transition-timing-function и transition-delay.
 
-/*@media УСЛОВИЕ {
-    .container{
-        background: aq;
+     Устанавливает эффект перехода между двумя состояниями элемента, они могут быть определены с помощью псевдокласса
+    :hover или :active, а также динамически через JavaScript.
+
+    1.Свойство transition-delay устанавливает время ожидания перед запуском эффекта перехода.
+
+    2.Свойство transition-property устанавливает имя стилевого свойства, значение которого будет отслеживаться для
+    создания эффекта перехода.
+
+    3.Свойство transition-duration задаёт время в секундах или миллисекундах, сколько должна длиться анимация перехода
+    до её завершения.
+
+    4.Свойство transition-timing-function устанавливает, насколько быстро должно изменяться значение стилевого свойство
+    для которого применяется эффект перехода.
+    */
+
+
+
+/*
+.container:hover {
+    background: green;
+    font-size: 26px;
+    color: white;
+}
+*/
+
+/*@media (max-width: 800px) {
+    .container {
+        background: yellow;
     }
 }*/
-/*------------------------Тип носителя:  print-для печати-------------------------------------------*/
 
-/*Примени этот код при печати*/
-@media print {
-    .container{
-        font-size: 6px;
-        background: aqua;
+/*------------------------------------animation------------------------------------*/
+
+/*
+
+CSS-анимации позволяют анимировать переходы от одной конфигурации CSS стилей к другой.
+animation - универсальное свойство, которое задаёт сразу несколько параметров анимации.
+
+    animation-name: changeMargin; !*имя->может быть любое*!
+    animation-duration: 5s; !*длительность->может быть любая *!
+    animation-timing-function: ease; !*скорость-> ease | ease-in | ease-out | ease-in-out | linear*!
+    animation-delay: 1.5s; !*задержка->может быть любая *!
+    animation-fill-mode: forwards;
+    !*какие стили должны применяться к элементу, когда анимация закончиться->none | forwards | backwards | both*!
+    animation-iteration-count: infinite; !*кол-во повторений->может быть любое(infinite-бесконечность) *!
+    animation-direction: alternate; !*направление движения анимации->normal | alternate | reverse | alternate-reverse*!
+
+Короткая запись:
+    animation:5s ease 1.5s forwards infinite alternate changeMargin
+
+Порядок:
+ animation:1s ease .5s infinite alternate move
+
+animation: duration|timing-function|
+delay|iteration-count|
+direction|fill-mode|name
+
+Правило @keyframes устанавливает ключевые кадры при анимации элемента. Ключевой кадр это свойства элемента (прозрачность,
+цвет, положение и др.), которые должны применяться к элементу в заданный момент времени. Таким образом, анимация
+представляет собой плавный переход стилевых свойств от одного ключевого кадра к другому. Вычисление промежуточных
+значений между такими кадрами берёт на себя браузер.
+Анимация может использовать ключевые слова from и to, а так же проценты 0% 20% 50% 100%
+
+@keyframes move {
+    from{
+    margin-top:0;
+    }
+    to{
+        margin-left: 500px;
     }
 }
-/* от 0 до 900px примени этот код(max-width->до)*/
-/*------------------------Характеристики: width,height-------------------------------------------*/
+
+
+
+*/
+
 /*
-@media (max-width: 900px) {
-    .container{
-        font-size: 6px;
-        background: aqua;
+.container {
+    width: 500px;
+    height: 500px;
+    background: tomato;
+    margin-left: -500px;
+
+    !*animation-name: changeBackground;*!
+    animation-name: changeMargin; !*имя *!
+    animation-duration: 5s; !*длительность *!
+    animation-timing-function: ease; !*скорость *!
+    animation-delay: 1.5s; !*задержка *!
+    animation-fill-mode: forwards; !*какие стили должны применяться к элементу, когда анимация закончиться*!
+    animation-iteration-count: infinite; !*кол-во повторений *!
+    animation-direction: alternate; !*направление движения анимации.*!
+}
+*/
+/*
+normal
+Анимация идёт с самого начала, после завершения цикла возвращается к исходному состоянию.
+alternate
+Анимация идёт с начала до конца, затем плавно возвращается в исходное положение.
+reverse
+Анимация идёт с конца цикла, после его завершения возвращается к исходному состоянию.
+alternate-reverse
+Анимация идёт с конца до начала, затем плавно возвращается в исходное положение.
+*/
+
+
+/*
+@keyframes changeBackground {
+    !* Анимация может использовать ключевые слова from и to, а так же проценты 0% 20% 50% 100% *!
+    !*
+    from{
+        background: tomato;}
+    *!
+    to{
+    background: greenyellow;
+         }
+}
+*/
+/*
+@keyframes changeBackground {
+    0%{
+        background: tomato;
+    }
+    25%{
+        color: blue;
+    }
+    50%{
+        color: orange;
+    }
+    100%{
+        background: greenyellow;
     }
 }
 */
-/* от 900 примени этот код(min-width->от)*/
+
 /*
-@media (min-width: 900px) {
-    .container{
-        font-size: 6px;
-        background: aqua;
+@keyframes changeMargin {
+    to{
+        margin-left: 500px;
     }
 }
 */
-/* от 0 до 600 примени этот код(max-height->до)*/
-/*@media (max-height: 600px) {
-    .container{
-        font-size: 6px;
-        background: aqua;
-    }
-}*/
-/*--------------------------Характеристики: aspect-ratio-соотношение сторон--------------------------*/
-/*@media (aspect-ratio: 4/3) {
-    .container{
-        font-size: 6px;
-        background: aqua;
-    }
-}*/
-/*--------------------------Характеристики: orientation(portrait-вертик., landscape-горизонт.)-ориентация--------------------------*/
 
-/*@media (orientation: portrait) {
-    .container{
-        font-size: 6px;
-        background: aqua;
-    }
-}*/
-
-/*--------------------------Логический оператор: и(and)--------------------------*/
-/* условие и с этим и с этим должно быть true */
-@media (min-width: 500px) and (max-width: 900px) {
-    .container{
-        font-size: 6px;
-        background: aqua;
-    }
+.container1,
+.container2,
+.container3,
+.container4,
+.container5{
+    width: 100px;
+    height: 100px;
+    background: tomato;
+    margin-top: 20px;
+    /*
+    animation-name: move;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    */
+    animation:1s.5s infinite alternate move
 }
-/*--------------------------Логический оператор: или(,)--------------------------*/
-@media (min-width: 900px) , (aspect-ratio: 16/9) {
-    .container{
-        font-size: 6px;
-        background: aqua;
-    }
+/*
+animation: duration|timing-function|
+delay|iteration-count|
+direction|fill-mode|name
+*/
+.container1{
+    animation-timing-function:linear;
 }
-
-/*--------------------------Логический оператор: отрицание(not)--------------------------*/
-@media not screen {
-    .container{
-        font-size: 6px;
-        background: aqua;
-    }
+.container2{
+    animation-timing-function:ease;
+}
+.container3{
+    animation-timing-function:ease-in;
+}
+.container4{
+    animation-timing-function:ease-out;
+}
+.container5{
+    animation-timing-function:ease-in-out;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@keyframes move {
+    to{
+        margin-left: 500px;
+    }
+}
 
 
 
