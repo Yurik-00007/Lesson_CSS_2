@@ -316,86 +316,102 @@ animation с именем и параметрами, а потом задать 
         transform: rotate(720deg) translate(0px) scale(1);
     }
 }
+
+------------------------------------box-sizing------------------------------------
+
+box-sizing - Применяется для изменения алгоритма расчёта ширины и высоты элемента.
+
+Согласно спецификации CSS ширина блока складывается из ширины содержимого (width), значений margin, padding и border.
+Свойство box-sizing позволяет изменить этот алгоритм, чтобы свойства width и height задавали размеры не содержимого, а
+размеры блока.
+
+content-box
+Основывается на стандартах CSS, при этом свойства width и height задают ширину и высоту содержимого и не включают в себя
+значения margin, padding и border.
+
+border-box
+Свойства width и height включают в себя значения padding и border, но не margin.
+Синтаксис
+box-sizing: content-box | border-box
+Рекомендую делать такую запись в начале каждого css документа
+*{
+    box-sizing: border-box;
+}
+
+------------------------------------Префиксы------------------------------------
+
+Префиксы нужны для кроссбраузерности, то есть чтобы отображалась нормально на разных браузерах.
+Префиксы обычно в ручную не пишутся.
+Кросбраузерность это когда сайт выглядит одинаково в разных браузерах
+
+autoprefixer: http://autoprefixer.github.io/ru/
+
+------------------------------------normalize------------------------------------
+
+normalize исходники: https://clck.ru/VRmgD
+Этот файл будет как осново для начало работы, чтобы все браузеры отображали сайт одинаково и сбрасывает не нужные стили
+
+
+------------------------------------normalize & reset------------------------------------
+Ссылки на сайт которые сбрасывают настройки до normalize или reset
+
+normalize.css: https://cdnjs.com/libraries/normalize
+reset.css: https://cdnjs.com/libraries/meyer-reset
+
+Они подключаются через html-> link
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+
  */
 
 
+
+*{
+    box-sizing: border-box;
+}
 /*Селектор по типу элемента*/
 body {
-    font-size: 46px;
+    /*font-size: 46px;*/
     margin: 0;
     height: 100vh;
-    font-weight: bold;
-    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 
-.circle {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: #00f7ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/*Поворачивает элемент*/
-/*
-.circle {
-    transform: rotate(0deg);
-    animation:1s ease .5s forwards infinite alternate rotate
-}
-
-@keyframes rotate {
-    to {
-        transform: rotate(360deg);
-    }
-}
-*/
-/*Сдвигает элемент*/
-/*.circle {
-    transform: translate(-300px, -300px);
-    animation:1s ease .5s forwards infinite alternate translate
-}
-
-@keyframes translate {
-    to {
-        transform: translate(300px, 300px);
-    }
+/*.block{
+    width: 300px;
+    height: 300px;
+    background: tomato;
+    border: 5px solid black;
+    padding: 15px;
 }*/
-/*Сдвигает элемент по оси Х*/
-/*
-.circle {
-    transform: translateX(-300px);
-    animation:1s ease .5s forwards infinite alternate translateX
+
+.container{
+    width: 300px;
+    height: 500px;
+    background: darkgrey;
+    margin: 0;
+    padding: 0;
 }
 
-@keyframes translateX {
-    to {
-        transform: translateX(300px);
-    }
-}
-*/
-.circle {
-    transform: rotate(0deg);
-    transform-origin: top left;
-    animation:5s ease .5s forwards infinite alternate translateX;
+.child1,.child2{
+    display: inline-block;
+    width: 148px;
+    height: 30px;
+    background: tomato;
+    padding: 5px;
+    margin: 0;
+    border: 2px solid red;
 }
 
-@keyframes translateX {
-    50% {
-        transform: rotate(360deg) translate(100px) scale(2);
-    }
-    100%{
-        transform: rotate(720deg) translate(0px) scale(1);
-    }
+.child2{
+    background: blue;
 }
-
-
-
-
 
 
 
