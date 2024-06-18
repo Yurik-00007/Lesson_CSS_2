@@ -9,7 +9,7 @@
     </style>
     <title>Title</title>
 
-<!--    <link rel="stylesheet" type="text/css" href="index.css"/>-->
+    <link rel="stylesheet" type="text/css" href="index.css"/>
 <!--  Теперь на любом браузере это должно выглядеть одинаково  -->
 <!--
     <link
@@ -18,35 +18,155 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
 -->
-    <!--  Теперь на любом теге все стили будут сброшены  -->
-    <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
-    />
+
 
 </head>
 
 <body>
-<!-----------------------------------------box-sizing------------------------------------------------->
+<!-----------------------------------------Не супер важные свойства------------------------------------------------->
 
-<!--<div class="block">
-    Круг
-</div>-->
+<p class="textStyle">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, quae quisquam. Commodi, corporis cumque delectus
+    ducimus et excepturi exercitationem facilis fuga impedit in magnam magni maiores nostrum nulla obcaecati, odio
+    perspiciatis provident quae rem reprehenderit similique sit sunt! Adipisci architecto aut commodi consequatur
+    deserunt dolore doloremque, ducimus earum eius eligendi, fugit ipsa laborum maiores maxime nemo nisi officia
+    praesentium provident quaerat quia quibusdam quidem quo quos reiciendis repellat sapiente ullam vel? Exercitationem,
+    explicabo fugiat impedit magnam nisi porro quibusdam quo sapiente tenetur. Accusantium ad beatae commodi deleniti
+    error est fugit laudantium, magni nostrum porro reiciendis saepe similique sit temporibus velit?
+</p>
 
-<!--<div class="container">
-    <input class="child1">
-    <input class="child2">
-</div>-->
+<ul>
+    <li>first</li>
+    <li>second</li>
+    <li>third</li>
+</ul>
 
-<button>test</button>
-<input type="text" placeholder="test"/>
-<a href="">Привет</a>
-<p>отступы</p>
-<h1>Заголовок</h1>
+
+
+<a href="#">Какой-то текст</a>
+
+<div class="box-shadow">
+</div>
+
+<div class="img-bgc">
+</div>
+<div class="img-cat">
+    <img src="./1.jpg" alt=""/>
+</div>
+<!-------------------------------------------filter--------------------------------------------->
+<h1>Эффект размытия(blur)</h1>
+<p>blur 5px</p>
+<img class="cat1" src="1.jpg" width="500" />
+<h1>Эффект яркость(brightness)</h1>
+<div class="container">
+    <div>
+        <p> brightness 10%</p>
+        <img class="cat2" src="1.jpg" width="500" />
+    </div>
+    <div>
+        <p>brightness 50%</p>
+        <img class="cat3" src="1.jpg" width="500" />
+    </div>
+    <div>
+        <p>brightness 90%</p>
+        <img class="cat4" src="1.jpg" width="500" />
+    </div>
+</div>
+
+<h1>Эффект контрастность(contrast)</h1>
+<div class="container">
+    <div>
+        <p>contrast 15%</p>
+        <img class="cat5" src="1.jpg" width="500" />
+    </div>
+    <div>
+        <p>contrast 65%</p>
+        <img class="cat6" src="1.jpg" width="500" />
+    </div>
+</div>
+<h1>Эффект чёрно-белого цвета(grayscale)</h1>
+
+<div class="container">
+    <div>
+        <p>grayscale 30%</p>
+        <img class="cat7" src="1.jpg" width="500" />
+    </div>
+    <div>
+        <p>grayscale 70%</p>
+        <img class="cat8" src="1.jpg" width="500" />
+    </div>
+</div>
+<h1>Эффект насыщенность(saturate)</h1>
+<div class="container">
+    <div>
+        <p>(насыщенность)saturate 20%</p>
+        <img class="cat9" src="1.jpg" width="500" />
+    </div>
+    <div>
+        <p>saturate 80%</p>
+        <img class="cat10" src="1.jpg" width="500" />
+    </div>
+    <div>
+        <p>saturate 300%</p>
+        <img class="cat11" src="1.jpg" width="500" />
+    </div>
+</div>
+
+<h1>Эффект старины(invert)</h1>
+<div class="container">
+    <div>
+        <p>sepia 20%</p>
+        <img class="cat12" src="1.jpg" width="500" />
+    </div>
+    <div>
+        <p>sepia 80%</p>
+        <img class="cat13" src="1.jpg" width="500" />
+    </div>
+</div>
+
+<h1>Эффект инвертации цвета(invert)</h1>
+<div class="container">
+    <div>
+        <p>invert 20%</p>
+        <img class="cat14" src="1.jpg" width="500" />
+    </div>
+    <div>
+        <p>invert 80%</p>
+        <img class="cat15" src="1.jpg" width="500" />
+    </div>
+    <div>
+        <p>invert 100%</p>
+        <img class="cat16" src="1.jpg" width="500" />
+    </div>
+</div>
+
+<h1>Эффект прозрачности(opacity)</h1>
+<div class="container">
+    <div>
+        <p>opacity 0%</p>
+        <img class="cat17" src="1.jpg" width="500" />
+    </div>
+    <div>
+        <p>opacity 50%</p>
+        <img class="cat18" src="1.jpg" width="500" />
+    </div>
+    <div>
+        <p>opacity 100%</p>
+        <img class="cat19" src="1.jpg" width="500" />
+    </div>
+</div>
 
 <script src="index.js"></script>
 </body>
 </html>
 
 
+<!-- Ссылки: -->
+<!-- box-shadow generator: https://active-vision.ru/icon/box-shadow/ -->
+
+<!--
+	box-shadow,
+	filter, line-height, list-style-type, text-decoration,
+	max/min-(width/height), object-fit, object-position,
+	inherit
+-->

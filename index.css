@@ -365,8 +365,34 @@ reset.css: https://cdnjs.com/libraries/meyer-reset
             href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
 
- */
 
+------------------------------------Не супер важные свойства------------------------------------
+1.line-height - свойство line-height устанавливает интервал между строками текста (межстрочный интервал).
+2.list-style-type - свойство list-style-type позволяет для списка ul вместо маркеров-точек сделать квадраты или окружности.
+Для списка ol вместо обычных цифр можно сделать римские, нумерацию в виде букв: латинских или греческих. Часто используется
+с none чтобы убрать значения по умолчанию для списка.
+3.text-decoration - cвойство text-decoration добавляет тексту различные эффекты: подчеркивание, перечеркивание, линию сверху.
+Часто используется чтобы отменить подчеркивания ссылки.
+4.box-shadow - Свойство box-shadow задает тень блоку. В качестве значения свойство принимает 6 параметров, перечисляемые
+через пробел, либо ключевое слово none, отменяющее тень совсем.
+https://active-vision.ru/icon/box-shadow/
+5.object-fit - управляет соотношением сторон заменяемых элементов, таких как <img> и <video>, когда у них задана ширина
+или высота, а также способом масштабирования. свойство похоже на background-size
+object-fit: fill | contain | cover | none
+    fill - элемент масштабируется, чтобы соответствовать заданным размерам, при этом пропорции игнорируются.
+	cover - масштабирует изображение с сохранением пропорций так, чтобы его ширина или высота равнялась ширине или высоте блока.
+	(будет растягивать картинку пока картинка не достигнет обе границы и будет сильно увеличивать изображение)
+	contain - масштабирует изображение с сохранением пропорций таким образом, чтобы картинка целиком поместилась внутрь
+	блока(будет растягивать картинку пока картинка не достигнет размера какой-то границы).
+	none - сохраняются исходные пропорции элемента, установленные значения ширины или высоты не влияют на содержимое.
+6. object-position - cвойство object-position применяется для выравнивания содержимого такого элемента как <img>, <video> или <object>
+внутри его блока. Это свойство работает аналогично background-position для фоновых изображений.
+7.inherit - ключевое слово, которое сообщает, что необходимо наследовать значение свойства у родительского элемента. Естественно,
+результат будет заметен только в том случае, если у родителя указанное свойство установлено.
+8.min-width - устанавливает максимальную ширину элемента.
+9.max-width - устанавливает минимальную ширину элемента.
+
+*/
 
 
 *{
@@ -376,42 +402,162 @@ reset.css: https://cdnjs.com/libraries/meyer-reset
 body {
     /*font-size: 46px;*/
     margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 250vh;
 }
 
+.textStyle{
+    min-width: 250px;
+    max-width: 500px;
+    line-height: 20px;
+}
 
-/*.block{
-    width: 300px;
-    height: 300px;
-    background: tomato;
-    border: 5px solid black;
-    padding: 15px;
-}*/
+ul li{
+    list-style-type:square;
+    list-style-type:none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.box-shadow {
+    width: 250px;
+    height: 250px;
+    background-color: tomato;
+    margin-top: 50px;
+    margin-left: 50px;
+    box-shadow: 21px 24px 5px 5px rgba(227, 83, 18, 0.29);
+}
+
+.img-bgc{
+    margin: 50px;
+    width: 250px;
+    height: 250px;
+    background: url("./1.jpg") center center/contain ; ;
+
+}
+
+.img-cat{
+    height: 250px;
+    width: 250px;
+    background: red;
+}
+
+.img-cat > img{
+height: inherit;
+    width: 250px;
+    object-fit: contain;
+    object-position: center right;
+}
 
 .container{
-    width: 300px;
-    height: 500px;
-    background: darkgrey;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    background:lightgray;
+}
+/*Размытие*/
+.cat1{
+    filter: blur(5px);
+}
+.cat1:hover{
+    filter: blur(0px);
+}
+/*Яркость*/
+.cat2:hover{
+    filter: brightness(10%);
+}
+.cat3:hover{
+    filter: brightness(50%);
+}
+.cat4:hover{
+    filter: brightness(150%);
+}
+/*Контрастность*/
+.cat5:hover{
+    filter: contrast(15%);
+}
+.cat6:hover{
+    filter: contrast(65%);
+}
+/*Контрастность*/
+.cat7:hover{
+    filter: grayscale(30%);
+}
+.cat8:hover{
+    filter: grayscale(70%);
+}
+/*Насыщенность*/
+.cat9:hover{
+    filter: saturate(20%);
+}
+.cat10:hover{
+    filter: saturate(80%);
+}
+.cat11:hover{
+    filter: saturate(300%);
+}
+/*Эффект старины*/
+.cat12:hover{
+    filter: sepia(20%);
+}
+.cat13:hover{
+    filter: sepia(80%);
+}
+/*Эффект инвертации цвета*/
+.cat14:hover{
+    filter: invert(20%);
+}
+.cat15:hover{
+    filter: invert(80%);
+}
+.cat16:hover{
+    filter: invert(100%);
+}
+/*Эффект прозрачности*/
+.cat17:hover{
+    filter: opacity(0%);
+}
+.cat18:hover{
+    filter: opacity(50%);
+}
+.cat19:hover{
+    filter: opacity(100%);
 }
 
-.child1,.child2{
-    display: inline-block;
-    width: 148px;
-    height: 30px;
-    background: tomato;
-    padding: 5px;
-    margin: 0;
-    border: 2px solid red;
-}
 
-.child2{
-    background: blue;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
