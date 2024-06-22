@@ -463,11 +463,10 @@ grid-template:repeat(3, 300px)/ repeat(3, 1fr);
  */
 
 
-
-
-*{
+* {
     box-sizing: border-box;
 }
+
 /*Селектор по типу элемента*/
 body {
     /*font-size: 46px;*/
@@ -478,10 +477,14 @@ body {
     align-items: center;
 }
 
-.wrapper{
+.wrapper {
     background: tomato;
-    /*width: 500px;*/
+    width: 500px;
+    width: auto;
+    padding: 10px;
+
 }
+
 /*
 .container{
     background:lightgray;
@@ -490,39 +493,57 @@ body {
     grid-template-rows: 200px;
 }
 */
-.container{
-    /*background:lightgray;*/
-    display: grid;
-    /*grid-template-columns: repeat(3, 200px);*/
-    /*grid-template-columns: repeat(3, 1fr);*/
-    /*grid-template-columns: 1fr 1fr 1fr;*/
-    /*grid-template-columns: repeat(3,minmax(100px,200px));*/
-    /*grid-template-rows: 200px;*/
-    /*grid-auto-rows: 300px;*/
-    /*
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
-    */
-    /*grid-template-columns: repeat(3, 1fr);*/
-    /*grid-template-columns: 1fr auto auto;*/
-    /*grid-template-columns: 1fr 1fr 1fr;*/
-    /*grid-template:300px 300px 300px/ 1fr 1fr 1fr;*/
-    grid-template:repeat(3, 300px)/ repeat(3, 1fr);
+.container {
 
-/*
+    /*background:lightgray;*/
+    padding: 10px;
+
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-columns: repeat(3, 200px); /* 200px 200px 200px*/
+    grid-template-columns: repeat(3, 1fr); /* 33.333% 33.333% 33.333%*/
+    grid-template-columns: 2fr 1fr 1fr; /* 50% 25% 25%*/
+    grid-template-columns: 1fr 1fr 1fr; /* 50% 25% 25%*/
+    grid-template-columns: 2fr 1fr 1fr; /* 50% 25% 25%*/
+    grid-template-columns: repeat(3, minmax(100px, 200px));
+    grid-template-columns: repeat(3, 1fr);
     grid-template-columns: repeat(3, 300px);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    grid-template-rows: 200px;
+    grid-template-rows: auto;
     grid-template-rows: repeat(3, 300px);
-justify-items: center;
+    grid-template-rows: repeat(3, 1fr);
+
+
+    grid-template: repeat(3, 300px)/repeat(3, 1fr);
+    grid-template: repeat(3, auto)/repeat(3, 1fr);
+
+    grid-auto-rows: 300px;
+    grid-auto-rows: auto;
+
+
+
+
+    grid-column-gap: 15px;
+    grid-row-gap: 30px;
+    grid-gap:0 0;
+
+    justify-items: center;
     align-items: center;
-*/
+
 }
 
-.child{
+.child {
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     font-size: 50px;
+    width: 150px;
+    width: 100%;
     width: 150px;
     height: 150px;
     border-radius: 5px;
@@ -530,37 +551,47 @@ justify-items: center;
 }
 
 
-
-.child1{
+.child1 {
     background: #f60;
     width: 200px;
 }
-.child2{
+
+.child2 {
     background: #c03;
     width:300px
-    /*align-self: flex-end;*/
+    /*align-self: start;*/
 }
-.child3{
+
+.child3 {
     background: #906;
+    /*align-self: end;*/
     /*justify-self:start*/
-    min-width: 150px;
+    /*min-width: 150px;*/
 }
-.child4{
+
+.child4 {
+    /*justify-self: start;*/
     background: #60f;
 }
-.child5{
+
+.child5 {
     background: #066;
+    /*justify-self: end;*/
 }
-.child6{
+
+.child6 {
     background: #393;
 }
-.child7{
+
+.child7 {
     background: #fc0;
 }
-.child8{
+
+.child8 {
     background: #3cf;
 }
-.child9{
+
+.child9 {
     background: #3c9;
 }
 
