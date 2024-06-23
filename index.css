@@ -398,6 +398,11 @@ filter:blur()->размытие, brightness()->яркость, contrast()->ко�
 sepia()->старина, invert()->инвертация, opacity()->прозрачности.
 
 ----------------------------------------------------------grid----------------------------------------------------------
+Чтобы четко видеть grid-линии нужно в панели разработчика нажать grit-контейнер->grit и так же можно задать цвет
+разметки, если выбрать во втором подокне Layout
+
+Свойства которые применяются непосредственно к grid-контейнеру⬇️:
+
 display: grid
 Grid представляет собой пересекающийся набор горизонтальных и вертикальных линий, образующих колонки и строки.
 Элементы могут быть помещены в grid в пределах линий этих колонок и строк.
@@ -410,7 +415,7 @@ grid-template-columns - свойство grid-template-columns задает ко
 элемент в гриде или сетке.
 Единицы измерения:
  -> пикселях размеры столбцов будут точно им соответствовать.
- ->auto, то столбцы будут заполнять все доступное пространство.
+ ->auto, то столбцы будут заполнять размер равный контенту.
  ->fr (фракция) означает, что все пространство будет разбито на одинаковые доли(преимущество адаптивность).
  пример:
   grid-template-columns: 200px 200px 200px;
@@ -420,16 +425,23 @@ grid-template-columns - свойство grid-template-columns задает ко
  grid-template-rows - свойство grid-template-rows задает количество и ширину рядов, которые будет занимать элемент в
  гриде или сетке.
 
-grid-auto-rows,grid-auto-columns - свойство grid-auto-columns,rows задает количество и ширину столбцов(строк), которые
+grid-auto-rows,grid-auto-columns - свойство grid-auto-columns,rows задает ширину столбцов(строк), которые
 будет занимать элемент в неявном гриде.Т.е. можно задать размер для одной строки( grid-template-rows: 200px), а потом с
  помощью grid-auto-rows задать свойство, которое будет применяться для остальных строк().
+ Пример:
+ grid-auto-rows: 125px 225px;
+   для того чтобы задать не явным ячейкам нужный размер можно применить grid-auto-rows,
+     т.е. не важно сколько их еще будет высота все равно будет 125px
+     Если написать более одного значения то высота будет повторяться: первый ряд будет 125px, а второй будет 225px
 
 
- minmax() это CSS функция, определяющая диапазон размеров, который больше или равен min и меньше или равен max.
+ minmax() это CSS функция, определяющая диапазон размеров, который больше или равен min или растянется до max.
  Аналогично min-width и max-width, но только для grit-self.
  пример:
  grid-template-columns: repeat(3,minmax(100px,200px));
 
+
+SHORTCUTS-КОРОТКАЯ ЗАПИСЬ
  gap - свойство gap задает расстояние между элементами в гриде. В значении свойства в элементе-родителе указываем нужное
  нам расстояние с единицами измерения - px, % и т.п.
  или есть альтернативные свойства grid-column-gap и grid-row-gap
@@ -438,6 +450,40 @@ grid-auto-rows,grid-auto-columns - свойство grid-auto-columns,rows за�
  к родительскому элементу.
  align-items - свойство align-items задает выравнивание элементов вдоль по вертикальной оси для grid и поперечной оси
  для flex блоков. Применяется к родительскому элементу.
+ SHORTCUTS-КОРОТКАЯ ЗАПИСЬ
+place-items: end start;
+place-items: stretch;
+
+auto - столбцы с auto подстраиваются под контент, занимая минимально необходимое пространство. Это не значит что 2 auto
+будут равны(auto не значит равная часть) размер в auto высчитывается относительно заполняемого объема ячейки
+пример: grid-template-columns: 1fr auto auto;
+1fr -равная часть, выберут самую большую ячейку и от размера её сделают для каждой ячейки такой размер.
+
+SHORTCUTS-КОРОТКАЯ ЗАПИСЬ
+свойства можно объединять вот некоторые, которые часто применяються из них:
+grid-template: стрки/столбцы
+grid-template: 300px 300px 300px/ 1fr 1fr 1fr;
+grid-template:repeat(3, 300px)/ repeat(3, 1fr);
+
+grid-auto-flow-Свойство задает автоматическое размещение элементов в гриде. Может иметь значения row -
+заполняет ряды элементами(вниз), column - столбцы(вправо) dense - размещает элементы на все пустые места в сетке; row dense -
+располагает элементы, заполняя каждый ряд и все свободные места сетки; column dense - заполняет элементами каждый
+столбец и все свободное место в гриде.
+
+Grid-линиям можно задать имена в квадратных скобка
+grid-template-columns:[col1] 400px [col-item2] 400px [sth3] 400px [four];
+grid-template-rows:[row1] 100px [row-item2] 300px [ath3] 150px [five];
+
+grid-template-areas - Свойство grid-template-areas задает размещение элементов в гриде. Вначале каждому элементу-потомку
+задаем имя с помощью свойства grid-area. Затем в элементе-родителе мы указываем свойство grid-template-areas, в котором
+перечисляем имена элементов-потомков в том порядке, в каком хотим их разместить в гриде.
+Пример:
+    grid-template-areas:
+            'a a b'
+            'a a b'
+            'c c b';
+
+Свойства которые применяються непосредственно к grid-элементам⬇️
 
  align-self - свойство align-self задает выравнивание вдоль по вертикальной оси для отдельного элемента в гриде и по
  поперечной оси для отдельно взятого flex-блока. По сути данное свойство представляет собой свойство align-items, но для
@@ -449,29 +495,80 @@ center - выравнивает элемент по центру контейн�
 stretch - растягивает элемент, чтобы заполнить ячейку по высоте (если это возможно).
 
 justify-self - cвойство justify-self задает выравнивание отдельного элемента в гриде по горизонтальной оси. Свойство
-применяется в том элементе, который мы хотим выравнять.
+применяется в том элементе, который мы хотим выравнять. это свойство будет игнарировать свойство для grid-контейнера justify-items
 
-auto - столбцы с auto подстраиваются под контент, занимая минимально необходимое пространство.
-пример: grid-template-columns: 1fr auto auto;
-1fr - выберут самую большую ячейку и от размера её сделают для каждой ячейки такой размер.
+ grid-column-start,grid-row-start - свойство задает начальную позицию элемента в гриде или сетке по столбцам(рядам).
+ grid-column-end,grid-row-end - свойство задает конечну позицию элемента в гриде или сетке по столбцам(рядам).
+ Отрицательное значение(-1) говорит что это последная линия, значение(-2)-говорит что предпоследнее значение
+ span- это называеться track, т.е. увеличение на число ячеек
+ SHORTCUTS-КОРОТКАЯ ЗАПИСЬ
+ grid-column: start/end
+ grid-column: 1/4;
+ grid-row: 1/-1;
+ grid-row: 1/span 2;
 
-свойства можно объединять вот некоторые, которые часто применяються из них:
-grid-template: стрки/столбцы
-grid-template: 300px 300px 300px/ 1fr 1fr 1fr;
-grid-template:repeat(3, 300px)/ repeat(3, 1fr);
+grid-area - свойство задает имя элементу в гриде. Эти имена указываются в свойстве grid-template-areas, в котором
+перечисляются имена элементов в том порядке, в котором их нужно разместить в гриде.
+Пример:
+grid-area: a;
+grid-area: b;
+grid-area: c;
+*/
 
- */
 
+/*Обнуление*/
 
-* {
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    border: 0;
     box-sizing: border-box;
 }
+
+html,
+body {
+    height: 100%;
+    background-color: #333;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: #fff;
+    font-size: 20px;
+    line-height: 24px;
+    /*пример*/
+    padding: 20px;
+    font-weight: 900;
+}
+
+a {
+    color: #794f45;
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 1;
+    margin: 0 0 50px 0;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 1;
+    margin: 0 0 20px 0;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ================ */
+
+/*Объяснение*/
 
 /*Селектор по типу элемента*/
 body {
     /*font-size: 46px;*/
     margin: 0;
-    height: 150vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -481,8 +578,8 @@ body {
     background: tomato;
     width: 500px;
     width: auto;
+    min-width: 500px;
     padding: 10px;
-
 }
 
 /*
@@ -494,8 +591,8 @@ body {
 }
 */
 .container {
-
-    /*background:lightgray;*/
+    background: lightgray;
+    width: auto;
     padding: 10px;
 
     display: grid;
@@ -516,24 +613,28 @@ body {
     grid-template-rows: auto;
     grid-template-rows: repeat(3, 300px);
     grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 
 
-    grid-template: repeat(3, 300px)/repeat(3, 1fr);
-    grid-template: repeat(3, auto)/repeat(3, 1fr);
+    /*grid-template: repeat(3, 300px)/repeat(3, 1fr);*/
+    /*grid-template: repeat(3,auto)/repeat(3, 1fr);*/
 
     grid-auto-rows: 300px;
-    grid-auto-rows: auto;
-
-
+    /*grid-auto-rows: auto;*/
 
 
     grid-column-gap: 15px;
     grid-row-gap: 30px;
-    grid-gap:0 0;
+    grid-gap: 0 0;
 
-    justify-items: center;
-    align-items: center;
+    justify-items: stretch;
+    align-items: stretch;
 
+    grid-auto-flow: column;
+    grid-template-areas:
+            'a a b'
+            'a a b'
+            'c c b';
 }
 
 .child {
@@ -544,8 +645,8 @@ body {
     font-size: 50px;
     width: 150px;
     width: 100%;
-    width: 150px;
-    height: 150px;
+    min-width: 150px;
+    min-height: 150px;
     border-radius: 5px;
     border: 1px solid black;
 }
@@ -553,13 +654,29 @@ body {
 
 .child1 {
     background: #f60;
-    width: 200px;
+    /*width: 200px;*/
+    /*происходит эффект наложения*/
+    /*
+    grid-column: 1/span 2;
+    grid-row: 1/3;
+    */
+    /*grid-row: 1/3;*/
+    /*grid-column: 1/span 2;*/
+    /*grid-row: 2/span 2;*/
+    grid-area: a;
 }
 
 .child2 {
     background: #c03;
-    width:300px
-    /*align-self: start;*/
+    /*width:300px*/
+    /*происходит эффект наложения*/
+    /*
+    grid-column: 2/4;
+    grid-row: 1/-1;
+    */
+    /*grid-column: 3/4;*/
+    grid-area: b;
+
 }
 
 .child3 {
@@ -567,6 +684,7 @@ body {
     /*align-self: end;*/
     /*justify-self:start*/
     /*min-width: 150px;*/
+    grid-area: c;
 }
 
 .child4 {
@@ -596,16 +714,264 @@ body {
 }
 
 
+/* ================ */
+/*Задание №1*/
+
+/*✅вариант 1 без grid-template-areas*/
+
+/*form{
+    width: 600px;
+    display: grid;
+    grid-template:repeat(4,auto)/repeat(2,auto);
+    gap: 10px;
+    !*grid-auto-flow: row;*!
+}
+label{
+    justify-self: end;
+}
+button{
+    grid-column: 2/span 1;
+    padding: 10px 0;
+}*/
+
+/*✅вариант 2 с grid-template-areas*/
+
+/*
+form {
+    width: 600px;
+    display: grid;
+    grid-template-areas:
+        'l1 i1'
+        'l2 i2'
+        'l3 i3'
+        '. b';
+    gap: 10px;
+}
+
+label:nth-of-type(1) {
+    grid-area: l1;
+    justify-self: end;
+}
+
+label:nth-of-type(2) {
+    grid-area: l2;
+    justify-self: end;
+}
+
+label:nth-of-type(3) {
+    grid-area: l3;
+    justify-self: end;
+}
+
+input:nth-of-type(1) {
+    grid-area: i1;
+}
+
+input:nth-of-type(2) {
+    grid-area: i2;
+}
+
+input:nth-of-type(3) {
+    grid-area: i3;
+}
+
+button {
+    grid-area: b;
+    padding: 10px 0;
+}
+*/
+
+/* ================ */
+/*Задание №2*/
+
+/*✅вариант 1 с grid-template-areas*/
+
+/*
+.box {
+    width: 100%;
+    height: 100%;
+    !*background: #b6b6b7;*!
+    display: grid;
+    grid-template-rows: 0.3fr 1fr 1fr 0.2fr;
+    grid-template-areas:
+    'header header header'
+    'sidebar main main'
+    'sidebar main main'
+    'footer footer footer';
+    grid-gap:4%;
+    !*grid-auto-rows:auto*!
+}
+.box *{
+    color:#585559
+}
+.header{
+    grid-area: header;
+    background: #b6b6b7;
+    border-radius: 15px;
+    display: grid;
+    grid-auto-flow: column;
+}
+.logo{
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+}
+.menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu_item{
+    width: 80px;
+    height: 10px;
+    background: #9789ce;
+    position: relative;
+    border-radius: 10px;
+}
+.menu_item:after{
+    content: '';
+    width: 80px;
+    height: 10px;
+    position: absolute;
+    top: 0px;
+    left: -90px;
+    border-radius: 10px;
+    background:  #9789ce;
+}
+.menu_item:before{
+    content: '';
+    width: 80px;
+    height: 10px;
+    position: absolute;
+    top: 0px;
+    left: 90px;
+    border-radius: 10px;
+    background:  #9789ce;
+}
+.sidebar{
+    grid-area: sidebar;
+    background: #b6b6b7;
+    border-radius: 15px;
+    display: flex; !* Добавлено *!
+    align-items: center; !* Вертикальное выравнивание *!
+    justify-content: center; !* Горизонтальное выравнивание *!
+
+}
+.main{
+    grid-area: main;
+    background: #b6b6b7;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 
+}
+.footer{
+    grid-area: footer;
+    background: #b6b6b7;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+*/
 
+/*✅вариант 2 без grid-template-areas*/
 
+/*.box {
+    width: 100%;
+    height: 100%;
+    !*background: #b6b6b7;*!
+    display: grid;
+    grid-template-rows: 0.3fr 1fr 1fr 0.2fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4%;
+    !*grid-auto-rows:auto*!
+}
 
+.box * {
+    color: #585559
+}
 
+.header {
+    background: #b6b6b7;
+    border-radius: 15px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column: 1/-1;
+}
 
+.logo {
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+}
 
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.menu_item {
+    width: 80px;
+    height: 10px;
+    background: #9789ce;
+    position: relative;
+    border-radius: 10px;
+}
 
+.menu_item:after {
+    content: '';
+    width: 80px;
+    height: 10px;
+    position: absolute;
+    top: 0px;
+    left: -90px;
+    border-radius: 10px;
+    background: #9789ce;
+}
+
+.menu_item:before {
+    content: '';
+    width: 80px;
+    height: 10px;
+    position: absolute;
+    top: 0px;
+    left: 90px;
+    border-radius: 10px;
+    background: #9789ce;
+}
+
+.sidebar {
+    background: #b6b6b7;
+    border-radius: 15px;
+    display: flex; !* Добавлено *!
+    align-items: center; !* Вертикальное выравнивание *!
+    justify-content: center; !* Горизонтальное выравнивание *!
+    grid-row: 2/4;
+}
+
+.main {
+    background: #b6b6b7;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 2/span 2;
+    grid-row: 2/span 2;
+
+}
+
+.footer {
+    background: #b6b6b7;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1/-1;
+}*/
 
 
 
