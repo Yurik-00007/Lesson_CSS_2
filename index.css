@@ -513,7 +513,136 @@ grid-area - свойство задает имя элементу в гриде.
 grid-area: a;
 grid-area: b;
 grid-area: c;
-*/
+----------------------------------------------------------Переносы слов----------------------------------------------------------
+
+Тег wbr указывает место, где браузер может сделать перенос строки в случае необходимости (если текст не помещается в
+ширину элемента). Такие переносы называются мягкими.
+При переносе слова через тег wbr символ переноса "-" не добавляется. Если он вам нужен - используйте символ мягкого
+переноса &shy; (точка с запятой в конце обязательна, это не опечатка).
+
+overflow-wrap - cвойство позволяет перенести буквы длинного слова на новую строку, если это слово не влазит в ширину контейнера.
+word-wrap (устаревшее название)
+Синтаксис
+селектор {
+	overflow-wrap: break-word | normal<-по-умалчанию;}
+
+break-word-->Заставляет длинные слова переноситься на новую строку, если это слово не помещается в контейнер. Следующее
+слово будет песаться не на той строке куда был сделан перенос, а на следующей(в этом отличие от word-break: break-all).
+При этом слово начнется с новой строки. Такие переносы называются жесткими. Они не соответствуют правилам русского языка.
+normal-->Стандартное поведение: если длинное слово не влазит по ширине в контейнер - оно просто вылезет за его границу (при этом начнется с новой строки).
+
+word-break - свойство позволяет перенести буквы длинного слова на новую строку, если это слово не влазит в ширину контейнера.
+ Синтаксис
+ селектор {
+	word-break: break-all | keep-all | normal<-по-умалчанию;
+}
+break-all-->Заставляет длинные слова переносится на новую строку, если это слово не помещается в контейнер. Следующее
+слово будет песаться на той строке куда был сделан перенос(в этом отличие от overflow-wrap:break-word).
+keep-all-->Для переноса иероглифов(китайские, японские иероглифы).
+normal-->Стандартное поведение: если длинное слово не влазит по ширине в контейнер - оно просто вылезет за его границу (при этом начнется с новой строчки).
+
+hyphens - свойство включает переносы слов в браузере с помощью знака переноса "-". Для поддержки русского языка
+необходимо добавить атрибут lang="ru" к тегу, к которому применяются переносы (или к родителю этого тега). Можно просто
+добавить этот атрибут к тегу html. Без этого переносы работать не будут.
+Синтаксис
+селектор {
+	hyphens: auto | manual | none<-по-умалчанию;
+}
+auto-->Расставляет знаки переноса там, где это необходимо.
+manual-->Добавляет переносы только в тех местах, где добавлен тег wbr или спецсимвол &shy; и только при необходимости.
+none-->Отменяет расстановку переносов (слова не будут переносится, даже если есть мягкие переносы).
+
+white-space - cвойство устанавливает как переносить текст на новую строку, а также как отображать пробелы
+между словами и переносы строк (места, где был нажат Enter при наборе кода).
+Синтаксис
+селектор {
+	white-space: nowrap | pre | pre-line | pre-wrap | normal<-по-умалчанию;
+}
+
+nowrap-->Запрещает тексту переносится на другую строку, даже если он не помещается в ширину контейнера (в этом случае
+         текст просто вылезет за его границы). Однако, добавление тега br заставит текст перенестись на новую строку.
+pre	--> Текст показывается так, как был набран в блокноте при верстке сайта: со всеми пробелами и enter-ами (если в
+         коде набрано несколько пробелов - на экране тоже будет несколько). При этом браузер не будет переносить текст на новую
+         строку, если он не помещается в контейнер - текст просто вылезет за его границы.
+pre-wrap-->	То же самое, что и pre, отличие в том, что если текст слишком длинный и не влазит в контейнер - браузер
+            перенесет его на другую строку.
+pre-line-->	Браузер учитывает только Enter-ы в HTML коде и игнорирует все остальное (несколько пробелов будут выглядеть
+            как один, браузер сам расставляет разрывы строк).
+normal-->Стандартное поведение: браузер сам расставляет разрывы строки так, чтобы слова поместились в контейнер.
+         Несколько пробелов в коде будут выглядеть как один на экране.
+
+overflow-x - cвойство указывает браузеру, как поступать с содержимым, которое вылазит за границы блока по горизонтали.
+overflow-y - cвойство указывает браузеру, как поступать с содержимым, которое вылазит за границы блока по вертикали.
+overflow - cвойство указывает браузеру, как поступать с содержимым (текст, картинки, другие блоки), которое вылазит за
+границы блока (за его ширину или высоту). Браузер может скрыть вылезающую часть, добавить полосы прокрутки или ничего
+не делать (оставить как есть - вылезшим за границы).
+Синтаксис
+селектор {
+	overflow: hidden | scroll | auto | visible<-по-умалчанию;
+}
+
+hidden-->Скрывает то содержимое, которое вылезло за границы блока.
+scroll-->Добавляет полосы прокрутки, причем всегда, даже если ничего не вылазит (в этом случае они будут неактивными).
+auto-->Добавляет полосы прокрутки при необходимости: если содержимое не помещается - они появятся, если все помещается -
+их не будет.
+visible-->Не скрывает то содержимое, которое вылезло за границы блока.
+
+text-overflow - cвойство добавляет троеточие в конец обрезанного текста в знак того, что текст не помещался в блок и был обрезан.
+Для работы свойства текст должен быть обрезан через свойство overflow или свойство overflow-x в значении hidden, auto
+или scroll. Если задано visible (а так и есть по умолчанию) - text-overflow работать не будет.
+Синтаксис
+селектор {
+    text-overflow: ellipsis | clip<-по-умалчанию;
+}
+
+ellipsis-->Добавляет в конец обрезанного текста троеточие.
+clip-->Не добавляет троеточие в конец (это значение по умолчанию, нужно для отмены действия свойства при необходимости).
+
+title - атрибут тега(любого:div,p,...) задает всплывающую подсказку для элемента, которая будет появляться по наведению
+мышкой на элемент (нужно навести и немного подержать курсор, секунду-две).
+Пример:
+css
+.newDiv4 { width: 135px; background: grey; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
+html
+<div class="newDiv4" title="Приветствую Приветствую Приветствую Приветствую">
+    Приветствую Приветствую Приветствую Приветствую
+</div>
+
+
+calc() - функция calc позволяет производить вычисления значений CSS свойств. Функция в качестве параметра принимает
+математическое выражение, результат вычисления которого можно использовать как значение CSS свойства.
+Выражение может включать операторы +, -, *, /.
+Пример:
+    width: calc(100vh - var(--header-width) - var(--footer-width));
+
+z-index - cвойство устанавливает, кто будет сверху в случае, если несколько элементов накладываются друг на друга.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ */
 
 
 /*Обнуление*/
@@ -530,14 +659,14 @@ grid-area: c;
 html,
 body {
     height: 100%;
-    background-color: #333;
+    background-color: #b6b6b6;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     color: #fff;
     font-size: 20px;
     line-height: 24px;
     /*пример*/
     padding: 20px;
-    font-weight: 900;
+    font-weight: 500;
 }
 
 a {
@@ -545,7 +674,7 @@ a {
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 20px;
     line-height: 1;
     margin: 0 0 50px 0;
 }
@@ -568,413 +697,123 @@ ul {
 body {
     /*font-size: 46px;*/
     margin: 0;
-    height: 100vh;
+    height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.wrapper {
+h3,
+p,
+div {
+    color: #000;
+}
+
+div {
+    width: 480px;
     background: tomato;
-    width: 500px;
-    width: auto;
-    min-width: 500px;
-    padding: 10px;
+    /*overflow-wrap: normal;*/
+    margin: 30px 0;
 }
 
-/*
-.container{
-    background:lightgray;
-    display: grid;
-    grid-template-columns: 200px 200px 200px;
-    grid-template-rows: 200px;
-}
-*/
-.container {
-    background: lightgray;
-    width: auto;
-    padding: 10px;
-
-    display: grid;
-    grid-template-columns: 200px 200px 200px;
-    grid-template-columns: repeat(3, 200px); /* 200px 200px 200px*/
-    grid-template-columns: repeat(3, 1fr); /* 33.333% 33.333% 33.333%*/
-    grid-template-columns: 2fr 1fr 1fr; /* 50% 25% 25%*/
-    grid-template-columns: 1fr 1fr 1fr; /* 50% 25% 25%*/
-    grid-template-columns: 2fr 1fr 1fr; /* 50% 25% 25%*/
-    grid-template-columns: repeat(3, minmax(100px, 200px));
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 300px);
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-columns: 1fr auto auto;
-    grid-template-columns: 1fr 1fr 1fr;
-
-    grid-template-rows: 200px;
-    grid-template-rows: auto;
-    grid-template-rows: repeat(3, 300px);
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-
-
-    /*grid-template: repeat(3, 300px)/repeat(3, 1fr);*/
-    /*grid-template: repeat(3,auto)/repeat(3, 1fr);*/
-
-    grid-auto-rows: 300px;
-    /*grid-auto-rows: auto;*/
-
-
-    grid-column-gap: 15px;
-    grid-row-gap: 30px;
-    grid-gap: 0 0;
-
-    justify-items: stretch;
-    align-items: stretch;
-
-    grid-auto-flow: column;
-    grid-template-areas:
-            'a a b'
-            'a a b'
-            'c c b';
+.div1, .div2 {
+    width: 80px;
 }
 
-.child {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 50px;
+.newDiv {
+    width: 80px;
+    background: deeppink;
+    overflow-wrap: break-word;
+}
+
+.newDiv1 {
+    width: 80px;
+    background: #3b00ff;
+    word-break: break-all;
+
+}
+
+.newDiv2 {
+    width: 80px;
+    background: #8d8dde;
+    hyphens: auto;
+}
+
+.newDiv3 {
+    width: 125px;
+    background: grey;
+    white-space: nowrap;
+}
+
+.newDiv4 {
+    width: 135px;
+    background: grey;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.newDiv5 {
+    height: 60px;
+    width: 140px;
+    background: grey;
+    /*white-space: nowrap;*/
+    /*overflow: auto;*/
+    overflow-x: auto;
+    overflow-y: auto;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.newDiv6 {
+    height: 60px;
+    width: 140px;
+    background: grey;
+    white-space: nowrap;
+    /*overflow: auto;*/
+    overflow-x: auto;
+    overflow-y: auto;
+    /*text-overflow:ellipsis;*/
+    cursor: pointer;
+}
+
+.newDiv7 {
+    --my-width: 480px;
+    --header-width: 200px;
+    --footer-width: 300px;
+    background: tomato;
+    height: 100px;
+    width: 320px;
+    width: calc(480px - 60px - 100px);
+    width: calc(var(--my-width) - var(--header-width) - var(--footer-width));
+    width: calc(100vh - var(--header-width) - var(--footer-width));
+    /*480 - 60 -100=320*/
+}
+.boxIndex{
+    position: relative;
+}
+.divIndex1,.divIndex2,.divIndex3{
     width: 150px;
-    width: 100%;
-    min-width: 150px;
-    min-height: 150px;
-    border-radius: 5px;
-    border: 1px solid black;
-}
-
-
-.child1 {
-    background: #f60;
-    /*width: 200px;*/
-    /*происходит эффект наложения*/
-    /*
-    grid-column: 1/span 2;
-    grid-row: 1/3;
-    */
-    /*grid-row: 1/3;*/
-    /*grid-column: 1/span 2;*/
-    /*grid-row: 2/span 2;*/
-    grid-area: a;
-}
-
-.child2 {
-    background: #c03;
-    /*width:300px*/
-    /*происходит эффект наложения*/
-    /*
-    grid-column: 2/4;
-    grid-row: 1/-1;
-    */
-    /*grid-column: 3/4;*/
-    grid-area: b;
-
-}
-
-.child3 {
-    background: #906;
-    /*align-self: end;*/
-    /*justify-self:start*/
-    /*min-width: 150px;*/
-    grid-area: c;
-}
-
-.child4 {
-    /*justify-self: start;*/
-    background: #60f;
-}
-
-.child5 {
-    background: #066;
-    /*justify-self: end;*/
-}
-
-.child6 {
-    background: #393;
-}
-
-.child7 {
-    background: #fc0;
-}
-
-.child8 {
-    background: #3cf;
-}
-
-.child9 {
-    background: #3c9;
-}
-
-
-/* ================ */
-/*Задание №1*/
-
-/*✅вариант 1 без grid-template-areas*/
-
-/*form{
-    width: 600px;
-    display: grid;
-    grid-template:repeat(4,auto)/repeat(2,auto);
-    gap: 10px;
-    !*grid-auto-flow: row;*!
-}
-label{
-    justify-self: end;
-}
-button{
-    grid-column: 2/span 1;
-    padding: 10px 0;
-}*/
-
-/*✅вариант 2 с grid-template-areas*/
-
-/*
-form {
-    width: 600px;
-    display: grid;
-    grid-template-areas:
-        'l1 i1'
-        'l2 i2'
-        'l3 i3'
-        '. b';
-    gap: 10px;
-}
-
-label:nth-of-type(1) {
-    grid-area: l1;
-    justify-self: end;
-}
-
-label:nth-of-type(2) {
-    grid-area: l2;
-    justify-self: end;
-}
-
-label:nth-of-type(3) {
-    grid-area: l3;
-    justify-self: end;
-}
-
-input:nth-of-type(1) {
-    grid-area: i1;
-}
-
-input:nth-of-type(2) {
-    grid-area: i2;
-}
-
-input:nth-of-type(3) {
-    grid-area: i3;
-}
-
-button {
-    grid-area: b;
-    padding: 10px 0;
-}
-*/
-
-/* ================ */
-/*Задание №2*/
-
-/*✅вариант 1 с grid-template-areas*/
-
-/*
-.box {
-    width: 100%;
-    height: 100%;
-    !*background: #b6b6b7;*!
-    display: grid;
-    grid-template-rows: 0.3fr 1fr 1fr 0.2fr;
-    grid-template-areas:
-    'header header header'
-    'sidebar main main'
-    'sidebar main main'
-    'footer footer footer';
-    grid-gap:4%;
-    !*grid-auto-rows:auto*!
-}
-.box *{
-    color:#585559
-}
-.header{
-    grid-area: header;
-    background: #b6b6b7;
-    border-radius: 15px;
-    display: grid;
-    grid-auto-flow: column;
-}
-.logo{
-    font-size: 40px;
-    display: flex;
-    align-items: center;
-}
-.menu{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.menu_item{
-    width: 80px;
-    height: 10px;
-    background: #9789ce;
-    position: relative;
-    border-radius: 10px;
-}
-.menu_item:after{
-    content: '';
-    width: 80px;
-    height: 10px;
+    height: 150px;
     position: absolute;
-    top: 0px;
-    left: -90px;
-    border-radius: 10px;
-    background:  #9789ce;
 }
-.menu_item:before{
-    content: '';
-    width: 80px;
-    height: 10px;
-    position: absolute;
-    top: 0px;
-    left: 90px;
-    border-radius: 10px;
-    background:  #9789ce;
+.divIndex1{
+    background: deeppink;
+    z-index: 1;
 }
-.sidebar{
-    grid-area: sidebar;
-    background: #b6b6b7;
-    border-radius: 15px;
-    display: flex; !* Добавлено *!
-    align-items: center; !* Вертикальное выравнивание *!
-    justify-content: center; !* Горизонтальное выравнивание *!
-
+.divIndex2{
+    background: greenyellow;
+    top:30px;
+    left: 30px;
+    z-index: 1;
 }
-.main{
-    grid-area: main;
-    background: #b6b6b7;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-
+.divIndex3{
+    background: #ffff14;
+    top:60px;
+    left: 60px;
 }
-.footer{
-    grid-area: footer;
-    background: #b6b6b7;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-*/
-
-/*✅вариант 2 без grid-template-areas*/
-
-/*.box {
-    width: 100%;
-    height: 100%;
-    !*background: #b6b6b7;*!
-    display: grid;
-    grid-template-rows: 0.3fr 1fr 1fr 0.2fr;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 4%;
-    !*grid-auto-rows:auto*!
-}
-
-.box * {
-    color: #585559
-}
-
-.header {
-    background: #b6b6b7;
-    border-radius: 15px;
-    display: grid;
-    grid-auto-flow: column;
-    grid-column: 1/-1;
-}
-
-.logo {
-    font-size: 40px;
-    display: flex;
-    align-items: center;
-}
-
-.menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.menu_item {
-    width: 80px;
-    height: 10px;
-    background: #9789ce;
-    position: relative;
-    border-radius: 10px;
-}
-
-.menu_item:after {
-    content: '';
-    width: 80px;
-    height: 10px;
-    position: absolute;
-    top: 0px;
-    left: -90px;
-    border-radius: 10px;
-    background: #9789ce;
-}
-
-.menu_item:before {
-    content: '';
-    width: 80px;
-    height: 10px;
-    position: absolute;
-    top: 0px;
-    left: 90px;
-    border-radius: 10px;
-    background: #9789ce;
-}
-
-.sidebar {
-    background: #b6b6b7;
-    border-radius: 15px;
-    display: flex; !* Добавлено *!
-    align-items: center; !* Вертикальное выравнивание *!
-    justify-content: center; !* Горизонтальное выравнивание *!
-    grid-row: 2/4;
-}
-
-.main {
-    background: #b6b6b7;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: 2/span 2;
-    grid-row: 2/span 2;
-
-}
-
-.footer {
-    background: #b6b6b7;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: 1/-1;
-}*/
-
-
-
 
 
 
